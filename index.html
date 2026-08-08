@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>「英会話入門」の書</title>
+    <style>
+        /* 全体の基本設定（スマホ向けの縦長レイアウト） 2026AUG08に〜はお監修*/
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* アプリ画面のコンテナ（最大幅を設けてスマホ風に） */
+        #app-container {
+            width: 100%;
+            max-width: 480px; /* スマホ画面の最大幅 */
+            background-color: #fff;
+            min-height: 100vh;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 各ページの設定 */
+        .page {
+            display: none; /* 基本は非表示 */
+            padding: 20px;
+            flex-grow: 1;
+        }
+        .page.active {
+            display: block; /* activeクラスがついたページだけ表示 */
+            animation: fadeIn 0.3s ease;
+        }
+
+        /* ふわっと表示されるアニメーション */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* 表紙のデザイン */
+        .cover-title {
+            text-align: center;
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        .cover-image-placeholder {
+            width: 100%;
+            height: 300px;
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #999;
+            margin-bottom: 30px;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        /* 目次デザイン */
+        .toc-title {
+            font-size: 1.5em;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .toc-list {
+            list-style: none;
+            padding: 0;
+        }
+        .toc-list li {
+            margin-bottom: 15px;
+        }
+        .toc-link {
+            display: block;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #2980b9;
+            font-weight: bold;
+            border-left: 5px solid #3498db;
+            cursor: pointer;
+        }
+        .toc-link:hover {
+            background-color: #e9ecef;
+        }
+
+        /* コラム本文デザイン */
+        .column-title {
+            font-size: 1.3em;
+            color: #2c3e50;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .column-content p {
+            margin-bottom: 1.5em;
+        }
+        .column-summary {
+            background-color: #fff9c4;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 30px;
+            font-weight: bold;
+        }
+
+        /* ナビゲーションボタン */
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        .btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3498db;
+            color: white;
+            font-size: 0.9em;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            flex: 1;
+            margin: 0 5px;
+        }
+        .btn:disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+        }
+        .btn-outline {
+            background-color: transparent;
+            color: #3498db;
+            border: 1px solid #3498db;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app-container">
+
+    <!-- 表紙ページ -->
+    <div id="page-cover" class="page active">
+        <div class="cover-title">「英会話入門」の書</div>
+        
+        <!-- イラストのプレースホルダー -->
+        <div class="cover-image-placeholder">
+            [ここにイラストが入ります]<br>
+            男性が3mの壁を望む。<br>左手前に壁を超える階段。<br>階段を登る人、口笛を吹いて右へ歩く人。
+        </div>
+
+        <div class="nav-buttons" style="justify-content: center;">
+            <button class="btn" onclick="showPage('page-toc')">ページを開く（もくじへ） →</button>
+        </div>
+    </div>
+
+    <!-- もくじページ -->
+    <div id="page-toc" class="page">
+        <h2 class="toc-title">もくじ</h2>
+        <ul class="toc-list">
+            <li><a class="toc-link" onclick="showPage('page-col00')">コラム#00 はじめに――お読みになる皆さんへ</a></li>
+            <li><a class="toc-link" onclick="showPage('page-col01')">コラム#01 なぜ英会話を始めるのですか？</a></li>
+        </ul>
+        <div class="nav-buttons">
+            <button class="btn btn-outline" onclick="showPage('page-cover')">← 表紙へ</button>
+            <button class="btn" onclick="showPage('page-col00')">読み始める →</button>
+        </div>
+    </div>
+
+    <!-- コラム#00 -->
+    <div id="page-col00" class="page">
+        <h2 class="column-title">コラム#00 はじめに――お読みになる皆さんへ</h2>
+        <div class="column-content">
+            <p>趣味で英会話を始めた頃、私は単語のスペルと発音の間にある規則性に気づき、独自の「拝借式米語発音記号」を編み出しました。</p>
+            <p>会話の例文を音読することは、第二言語（ここでは母語以外に学ぶ言語）の習得に不可欠です。この記号を音読に活用し、これから英会話を始める方々に伝えたいという思いを、私はずっと温めてきました。</p>
+            <p>このたび、ようやくその解説を書き始めることになりました。しかし、記号の仕組みを伝えるためには、それに付随するさまざまな事柄についても説明する必要があることに気づきました。</p>
+            <p>本書は、趣味として英会話を始めたい方や、今度こそ学習を継続して力を向上させたい「大人の初心者」を対象としています。<br>
+            英会話学習を第三者の視点から考察する本コラム集が、少しでも皆さんの力になればという一心で執筆しました。</p>
+            <p>英会話初心者の水準を建物の1階、日常会話ができる水準を2階とするならば、本書は皆さんが上階へ上がるための「階段」となるようなイメージで作成しています。<br>
+            継続的な練習とともに、本書が皆さんの最初の一歩のお役に立てることを願っています。</p>
+
+            <h3>この入門書の留意点</h3>
+            <ul>
+                <li>発音記号の説明が完結するまでは、便宜上カタカナを表記・併記します。</li>
+                <li>特に記載がない限り、「英語」は米語（アメリカ英語）を指します。</li>
+                <li>本書の勉強方法は、筆者の調査と経験に基づく提案であり、上達や効果を保証するものではありません。</li>
+                <li>商用利用を除き、転用・配布は自由です。</li>
+            </ul>
+
+            <div class="column-summary">
+                【今回のコラムのまとめ】<br>
+                本書は「急がば廻れ」の精神で、英会話学習の本質とは何かを考察します。
+            </div>
+        </div>
+        
+        <!-- ナビゲーション -->
+        <div class="nav-buttons">
+            <button class="btn" onclick="showPage('page-toc')">← 前のページ</button>
+            <button class="btn btn-outline" onclick="showPage('page-toc')">もくじへ</button>
+            <button class="btn" onclick="showPage('page-col01')">次のページ →</button>
+        </div>
+    </div>
+
+    <!-- コラム#01 -->
+    <div id="page-col01" class="page">
+        <h2 class="column-title">コラム#01 なぜ英会話を始めるのですか？</h2>
+        <div class="column-content">
+            <p>世の中には、さまざまな趣味や教養としての習い事があります。<br>
+            ここでは「英会話」を趣味や教養の一つとして捉え、他の習い事との共通点などから考えてみたいと思います。</p>
+            <p>お稽古ごとは、スポーツを含めて基礎練習が大切です。また、習慣として続けることも大切です。</p>
+            <p>つまり、いかに基礎を習得するか、そして練習を長続きさせるためにはどのような工夫が必要なのかを考えることが大事だといえます。</p>
+            <p>英会話教室やスマートフォンアプリの宣伝で、英会話を始めようとする方に向けた、次のような動画広告を目にした方もいらっしゃると思います。</p>
+            <ul>
+                <li>英会話がみるみる上達する</li>
+                <li>簡単にリスニング力、またはスピーキング力が高まる</li>
+            </ul>
+            <p>筆者の考えでは、大人に効くそんな魔法は存在しません。<br>
+            地道に練習して、三歩進んで二歩下がる。そのくらいの感覚ではないでしょうか。<br>
+            ピアノのような楽器と同様、幼少の頃から習い始めるのと、大人になってから始めるのとでは状況が異なります。</p>
+            <p>ゴルフやテニスの愛好者の多くは、大人になってから始められると思います。<br>
+            素振りによる正しいフォームの練習や、ボールを使った練習を繰り返してから、実際にプレー（試合など）するという流れになります。<br>
+            講師といきなり英会話をすることから練習を始めるのは、ゴルフなら実際のコース、テニスなら実際のコートで、いきなり試合をすることに相当するのではないでしょうか。<br>
+            筆者は、それでは効率が良いとはいえないと考えています。</p>
+            <p>ところで、現代は「英会話学習天国」です。インターネットのおかげです。<br>
+            動画や教材が豊富にあり、書籍も数多くあります。<br>
+            また、英会話を自分で習得する必要性自体も、以前より低くなった時代ともいえます。インターネット上には、自動翻訳アプリなど便利な道具があるからです。<br>
+            第二言語を学習するには良い環境が整っていて、また、学習しなくても困らない時代になるといっても過言ではないかと思います。</p>
+            <p>いずれにせよ、あとは本人の動機や興味の度合いということになるでしょう。<br>
+            英会話の練習を始めるにあたり、どうしても英会話の習得が必要だという状況にある方も、人生をより豊かにするために英会話を学習される方も、それぞれの目的や目標に向けて、最後まで読んでいただければと願っています。</p>
+
+            <div class="column-summary">
+                【このコラムのまとめ】<br>
+                英会話学習は、他のお稽古ごとと同じように「継続は力なり」。
+            </div>
+        </div>
+
+        <!-- ナビゲーション -->
+        <div class="nav-buttons">
+            <button class="btn" onclick="showPage('page-col00')">← 前のページ</button>
+            <button class="btn btn-outline" onclick="showPage('page-toc')">もくじへ</button>
+            <button class="btn" disabled>次のページ →</button>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    // ページを切り替えるJavaScript関数
+    function showPage(pageId) {
+        // すべてのページから 'active' クラスを外して非表示にする
+        var pages = document.querySelectorAll('.page');
+        pages.forEach(function(page) {
+            page.classList.remove('active');
+        });
+
+        // 指定されたIDのページに 'active' クラスをつけて表示する
+        var targetPage = document.getElementById(pageId);
+        if (targetPage) {
+            targetPage.classList.add('active');
+            // ページ上部にスクロール
+            window.scrollTo(0, 0); 
+        }
+    }
+</script>
+
+</body>
+</html>
+```eof
