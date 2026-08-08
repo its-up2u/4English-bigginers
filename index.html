@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>「英会話入門」の書</title>
     <style>
-        /* 全体の基本設定（スマホ向けの縦長レイアウト） 2026AUG08に〜はお監修*/
+        /* 全体の基本設定（スマホ向けの縦長レイアウト） 2028AUG08*/
         body {
             font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
             line-height: 1.8;
@@ -20,7 +20,7 @@
         /* アプリ画面のコンテナ（最大幅を設けてスマホ風に） */
         #app-container {
             width: 100%;
-            max-width: 480px; /* スマホ画面の最大幅 */
+            max-width: 480px;
             background-color: #fff;
             min-height: 100vh;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -31,16 +31,15 @@
 
         /* 各ページの設定 */
         .page {
-            display: none; /* 基本は非表示 */
+            display: none;
             padding: 20px;
             flex-grow: 1;
         }
         .page.active {
-            display: block; /* activeクラスがついたページだけ表示 */
+            display: block;
             animation: fadeIn 0.3s ease;
         }
 
-        /* ふわっと表示されるアニメーション */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -55,20 +54,21 @@
             margin-bottom: 20px;
             color: #2c3e50;
         }
-        .cover-image-placeholder {
+        
+        .cover-image {
             width: 100%;
-            height: 300px;
-            background-color: #e0e0e0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px dashed #999;
-            margin-bottom: 30px;
+            max-height: 400px;
+            object-fit: contain;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .version-info {
             text-align: center;
-            padding: 20px;
-            box-sizing: border-box;
+            font-size: 0.85em;
             color: #666;
-            font-size: 0.9em;
+            margin-bottom: 15px;
         }
 
         /* 目次デザイン */
@@ -98,6 +98,12 @@
         }
         .toc-link:hover {
             background-color: #e9ecef;
+        }
+        .toc-link.disabled {
+            color: #95a5a6;
+            border-left-color: #bdc3c7;
+            cursor: not-allowed;
+            background-color: #fdfdfd;
         }
 
         /* コラム本文デザイン */
@@ -160,10 +166,11 @@
     <div id="page-cover" class="page active">
         <div class="cover-title">「英会話入門」の書</div>
         
-        <!-- イラストのプレースホルダー -->
-        <div class="cover-image-placeholder">
-            [ここにイラストが入ります]<br>
-            男性が3mの壁を望む。<br>左手前に壁を超える階段。<br>階段を登る人、口笛を吹いて右へ歩く人。
+        <!-- 表紙イラスト（GitHubにアップロードした画像ファイル名に合わせます） -->
+        <img src="cover.png" alt="英会話入門 表紙イラスト" class="cover-image">
+
+        <div class="version-info">
+            ２０２６年８月８日初版作成、<br>２０２６年８月８日第０１版改定
         </div>
 
         <div class="nav-buttons" style="justify-content: center;">
@@ -175,8 +182,11 @@
     <div id="page-toc" class="page">
         <h2 class="toc-title">もくじ</h2>
         <ul class="toc-list">
-            <li><a class="toc-link" onclick="showPage('page-col00')">コラム#00 はじめに――お読みになる皆さんへ</a></li>
+            <li><a class="toc-link" onclick="showPage('page-col00')">コラム#00 はじめに お読みになる皆さんへ</a></li>
             <li><a class="toc-link" onclick="showPage('page-col01')">コラム#01 なぜ英会話を始めるのですか？</a></li>
+            <li><a class="toc-link" onclick="showPage('page-col02')">コラム#02 似て非なるもの――共通点と異なるところ</a></li>
+            <li><a class="toc-link" onclick="showPage('page-col03')">コラム#03 「英会話」を掘り下げる</a></li>
+            <li><a class="toc-link disabled">コラム#04 ”うどん”と”そば"で考察する（執筆中）</a></li>
         </ul>
         <div class="nav-buttons">
             <button class="btn btn-outline" onclick="showPage('page-cover')">← 表紙へ</button>
@@ -186,7 +196,7 @@
 
     <!-- コラム#00 -->
     <div id="page-col00" class="page">
-        <h2 class="column-title">コラム#00 はじめに――お読みになる皆さんへ</h2>
+        <h2 class="column-title">コラム#00 はじめに お読みになる皆さんへ</h2>
         <div class="column-content">
             <p>趣味で英会話を始めた頃、私は単語のスペルと発音の間にある規則性に気づき、独自の「拝借式米語発音記号」を編み出しました。</p>
             <p>会話の例文を音読することは、第二言語（ここでは母語以外に学ぶ言語）の習得に不可欠です。この記号を音読に活用し、これから英会話を始める方々に伝えたいという思いを、私はずっと温めてきました。</p>
@@ -209,8 +219,6 @@
                 本書は「急がば廻れ」の精神で、英会話学習の本質とは何かを考察します。
             </div>
         </div>
-        
-        <!-- ナビゲーション -->
         <div class="nav-buttons">
             <button class="btn" onclick="showPage('page-toc')">← 前のページ</button>
             <button class="btn btn-outline" onclick="showPage('page-toc')">もくじへ</button>
@@ -250,10 +258,95 @@
                 英会話学習は、他のお稽古ごとと同じように「継続は力なり」。
             </div>
         </div>
-
-        <!-- ナビゲーション -->
         <div class="nav-buttons">
             <button class="btn" onclick="showPage('page-col00')">← 前のページ</button>
+            <button class="btn btn-outline" onclick="showPage('page-toc')">もくじへ</button>
+            <button class="btn" onclick="showPage('page-col02')">次のページ →</button>
+        </div>
+    </div>
+
+    <!-- コラム#02 -->
+    <div id="page-col02" class="page">
+        <h2 class="column-title">コラム#02 似て非なるもの――共通点と異なるところ</h2>
+        <div class="column-content">
+            <p>筆者が学校で英語の授業を受け始めたのは中学校からでした。2020年からは、小学校高学年の英語が正式な教科となり、成績がつけられるようになったようです。<br>
+            ここでは「英語」を学校で習う科目の一つとして捉え、他の教科との共通点と、「英会話」との違いから考えてみたいと思います。<br>
+            他の教科との共通点をひとことでいうと、「成績がつく」ということです。授業中の態度や成果物、試験結果などが評価され、数値化されます。</p>
+            <p>英語を第二言語として学ぶということは、正しい文法や単語（表現）を使うための知識を身につけることでもあります。英語の学習項目は、「読む・書く・聞く・話す」の4つに分類できます。この4つのうち、英会話で主に必要となるのは「聞く・話す」です。</p>
+            <p>成績をつけるとなると、公平な採点が必要です。テストや試験のそれぞれの回答について、「何が正解なのか」「どのような回答が模範解答なのか」を定めることは重要です。これは英語の資格試験でも同じことがいえると思います。</p>
+            <p>ところが、音（音声）は目に見えず、聞き終わった後には形として残りません。そのため、「聞くこと」「話すこと」の能力を測るのは厄介です。正解の基準を設定することも容易ではありません。<br>
+            特に、大量の受験者それぞれの「話す」能力を公平に測定することには、さまざまな難しさがあるでしょう。</p>
+            <p>その結果、試験では「読む・書く」ことが重点的に取り上げられるのは、ある意味で必然なのかもしれません。<br>
+            日本語は英語とは言語の系統も文法も異なります。単語（表現）も非常に多く、試験問題を作るための材料には事欠きません。<br>
+            世界的な視点で見ると、日本人は英会話が苦手な方が多いといわれます。一方で、英語とは言語の系統も異なる日本語を母語としながら、英語の「読む・書く」といった能力については比較的高い水準にある、という見方もあります。</p>
+            <p>英会話は、相手との意思や意見を交換するための道具です。<br>
+            「伺いたいことを聞く」「伝えたいことを話す」。この繰り返しです。<br>
+            科目としての英語の授業・試験と英会話の違いを、ひとことで表現すると「異なるスポーツ競技」のようなものだと筆者は考えます。<br>
+            英会話は能力を測る競技ではありませんが、スポーツに例えるなら「テニス」が近いと思います。</p>
+            <p>テニスでは、相手から来たボールに即座に反応し、相手に返す必要があります。英会話も同じように、相手の発言を聞き、その場で理解し、自分の言葉を返す必要があります。<br>
+            一方、科目としての英語は「ゴルフ」に近いのではないでしょうか。<br>
+            ゴルフでは、じっくりとボールと向き合い、どのように対応するかを考えることができます。学校の英語でも、問題を読んで考え、時間をかけて回答することができます。</p>
+            <p>だから、「ゴルフは得意だけれどテニスは苦手」という人がいても、あるいはその逆であっても、決して不思議ではありません。英語の試験は得意だけれど英会話は苦手、またはその逆ということも、十分に筋が通ると思います。<br>
+            この例え話から、英語と英会話には共通点があることも分かります。<br>
+            それは、スポーツ選手が鍛えた「体力と体幹」に相当するものです。<br>
+            英語でいえば、それは「英文法と英単語（表現）の知識」に当たります。</p>
+
+            <div class="column-summary">
+                【このコラムのまとめ】<br>
+                音（音声）は目に見えず、形として残らない。
+            </div>
+        </div>
+        <div class="nav-buttons">
+            <button class="btn" onclick="showPage('page-col01')">← 前のページ</button>
+            <button class="btn btn-outline" onclick="showPage('page-toc')">もくじへ</button>
+            <button class="btn" onclick="showPage('page-col03')">次のページ →</button>
+        </div>
+    </div>
+
+    <!-- コラム#03 -->
+    <div id="page-col03" class="page">
+        <h2 class="column-title">コラム#03 「英会話」を掘り下げる</h2>
+        <div class="column-content">
+            <p>「英会話」という言葉の定義を検索してみました。<br>
+            「英語を用いて即時に意思疎通を行う、口頭でのやり取り」という説明がありました。<br>
+            つまり、会話とは「即時に意思疎通を行う口頭でのやり取り」といえます。<br>
+            また、「会話は言葉のキャッチボールである」というフレーズもよく耳にします。</p>
+            <p>昨今、レストランやコンビニエンスストアなど、さまざまな場所で日本語を話す外国人の方を目にします。<br>
+            ひとこと、ふたこと話をすると、「きっと日本語は第二言語なのだろうな」と思うことがあります。</p>
+            <p>そして、英会話が趣味の筆者は、「この方は日本語を結構勉強されている」と感心させられることが多々あります。<br>
+            ここで着目したいのは、「日本語の母語話者（ネイティブスピーカー）ではないにもかかわらず、相手の言葉を聞き取り、こちらの話すことも支障なく理解してくれる」という点です。</p>
+            <p>これは、英会話の習得を考えるうえで参考になる気がします。<br>
+            まとめると、次の2点です。</p>
+            <ul>
+                <li>① 「アメリカ育ちですか？」と相手に誤解されるほど発音がきれいなのが理想ですが、まずは「話していることが十分理解できる」と感じてもらえる発音ができればよい。</li>
+                <li>② 会話に支障が出るほど聞き返すことなく、「相手の話していることを理解する」ことができる。</li>
+            </ul>
+            <p>もちろん、実際の会話では聞き返すこと自体が悪いわけではありません。ここでいう「聞き返すことなく」とは、必要以上に聞き返さなくても相手の話を理解できる、という意味です。</p>
+            <p>日本語は、英語などと比べると、使われる音の種類が少ない傾向があります。<br>
+            そのため、日本語には存在しない音を聞いたとき、それに近い別の音として聞こえてしまうことがあります。</p>
+            <p>ここで仮想の話をしてみます。<br>
+            「か」という発音は存在しますが、「が」という発音は存在しない、という言語があるとします。<br>
+            その国の人が日本語を勉強すると、次のように聞こえてしまうかもしれません。</p>
+            <blockquote>
+                ①「カラスが飛んできて窓のガラスに当たった。」<br>
+                  ↓<br>
+                ②「カラスか飛んできて窓のカラスに当たった。」<br>
+                <small>※本来①のように聞こえるはずが、②のように聞こえてしまうという仮想例です。</small>
+            </blockquote>
+            <p>英語で使われる音の種類と日本語の音の種類を比べると、日本語には存在しない英語の音がいくつもあります。<br>
+            例えば、英単語のスペルに出てくる ”R”や”TH” に対応する音などです。<br>
+            母音についても、日本語の「ア」に近い音だけを見ても、英語には複数の異なる音があります。</p>
+            <p>こうした「日本語にはない英語の音」があることは、英会話を学ぶうえで重要なポイントになります。<br>
+            <small>※英会話に支障がないよう、英語の発音(発音記号)については、ゆくゆく詳しく解説していきます。</small></p>
+
+            <div class="column-summary">
+                【このコラムのまとめ】<br>
+                英語の発音の中には、日本語には存在しない発音がある。<br>
+                また、それらの存在しない発音を耳にすると近い音に変換されてしまう。
+            </div>
+        </div>
+        <div class="nav-buttons">
+            <button class="btn" onclick="showPage('page-col02')">← 前のページ</button>
             <button class="btn btn-outline" onclick="showPage('page-toc')">もくじへ</button>
             <button class="btn" disabled>次のページ →</button>
         </div>
@@ -262,19 +355,14 @@
 </div>
 
 <script>
-    // ページを切り替えるJavaScript関数
     function showPage(pageId) {
-        // すべてのページから 'active' クラスを外して非表示にする
         var pages = document.querySelectorAll('.page');
         pages.forEach(function(page) {
             page.classList.remove('active');
         });
-
-        // 指定されたIDのページに 'active' クラスをつけて表示する
         var targetPage = document.getElementById(pageId);
         if (targetPage) {
             targetPage.classList.add('active');
-            // ページ上部にスクロール
             window.scrollTo(0, 0); 
         }
     }
@@ -282,4 +370,3 @@
 
 </body>
 </html>
-```eof
