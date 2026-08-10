@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>「英会話入門」の書</title>
     <style>
-        /* 全体の基本設定（スマホ向けの縦長レイアウト） 2028AUG08*/
+        /* 全体の基本設定（スマホ向けの縦長レイアウト） */
         body {
             font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
             line-height: 1.8;
@@ -59,9 +59,27 @@
             width: 100%;
             max-height: 400px;
             object-fit: contain;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .author-name {
+            text-align: right;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
+        .quote-box {
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            font-style: italic;
+            color: #555;
+            font-family: "Georgia", serif;
+            line-height: 1.5;
         }
         
         .version-info {
@@ -113,6 +131,7 @@
             border-bottom: 1px solid #ccc;
             padding-bottom: 10px;
             margin-bottom: 20px;
+            line-height: 1.4;
         }
         .column-content p {
             margin-bottom: 1.5em;
@@ -166,15 +185,22 @@
     <div id="page-cover" class="page active">
         <div class="cover-title">「英会話入門」の書</div>
         
-        <!-- 表紙イラスト（GitHubにアップロードした画像ファイル名に合わせます） -->
         <img src="cover.png" alt="英会話入門 表紙イラスト" class="cover-image">
-
-        <div class="version-info">
-            ２０２６年８月８日初版作成、<br>２０２６年８月８日第０１版改定
-        </div>
+        
+        <div class="author-name">著者：に〜はお田中</div>
 
         <div class="nav-buttons" style="justify-content: center;">
             <button class="btn" onclick="showPage('page-toc')">ページを開く（もくじへ） →</button>
+        </div>
+
+        <div class="quote-box">
+            Nothing is particularly hard if you divide it into small jobs.<br>
+            - Henry Ford -
+        </div>
+
+        <div class="version-info">
+            2026年08月10日第２版改定<br>
+            2026年08月08日初版発行
         </div>
     </div>
 
@@ -184,9 +210,16 @@
         <ul class="toc-list">
             <li><a class="toc-link" onclick="showPage('page-col00')">コラム#00 はじめに お読みになる皆さんへ</a></li>
             <li><a class="toc-link" onclick="showPage('page-col01')">コラム#01 なぜ英会話を始めるのですか？</a></li>
-            <li><a class="toc-link" onclick="showPage('page-col02')">コラム#02 似て非なるもの――共通点と異なるところ</a></li>
+            <li><a class="toc-link" onclick="showPage('page-col02')">コラム#02 似て非なるもの  共通点と異なるところ</a></li>
             <li><a class="toc-link" onclick="showPage('page-col03')">コラム#03 「英会話」を掘り下げる</a></li>
-            <li><a class="toc-link disabled">コラム#04 ”うどん”と”そば"で考察する（執筆中）</a></li>
+            <li><a class="toc-link disabled">コラム#04 欧米人の話し方をものまねをしてみる(作成中)</a></li>
+            <li><a class="toc-link disabled">コラム#05 日本語の発音を”うどん”と”そば"で考察する(作成中)</a></li>
+            <li><a class="toc-link disabled">コラム#06 ”仮名”は最強の発音記号(作成中)</a></li>
+            <li><a class="toc-link disabled">コラム#07 鶏が先か？卵が先か？(作成中)</a></li>
+            <li><a class="toc-link disabled">コラム#08 ”熱い”と考えてから喋ってますか？(仮称)(作成中)</a></li>
+            <li><a class="toc-link disabled">コラム#09 所詮言葉は言葉である(作成中)</a></li>
+            <li><a class="toc-link disabled">コラム#10 ”発音記号”はじめました(仮称)(作成中)</a></li>
+            <li><a class="toc-link disabled">コラム#XX おわりに 最後まで読んで頂いた皆様へ(作成中)</a></li>
         </ul>
         <div class="nav-buttons">
             <button class="btn btn-outline" onclick="showPage('page-cover')">← 表紙へ</button>
@@ -196,7 +229,7 @@
 
     <!-- コラム#00 -->
     <div id="page-col00" class="page">
-        <h2 class="column-title">コラム#00 はじめに お読みになる皆さんへ</h2>
+        <h2 class="column-title">コラム#00 はじめに――お読みになる皆さんへ</h2>
         <div class="column-content">
             <p>趣味で英会話を始めた頃、私は単語のスペルと発音の間にある規則性に気づき、独自の「拝借式米語発音記号」を編み出しました。</p>
             <p>会話の例文を音読することは、第二言語（ここでは母語以外に学ぶ言語）の習得に不可欠です。この記号を音読に活用し、これから英会話を始める方々に伝えたいという思いを、私はずっと温めてきました。</p>
@@ -238,6 +271,7 @@
             <ul>
                 <li>英会話がみるみる上達する</li>
                 <li>簡単にリスニング力、またはスピーキング力が高まる</li>
+                <li>英文法の勉強は不要である</li>
             </ul>
             <p>筆者の考えでは、大人に効くそんな魔法は存在しません。<br>
             地道に練習して、三歩進んで二歩下がる。そのくらいの感覚ではないでしょうか。<br>
@@ -248,7 +282,7 @@
             筆者は、それでは効率が良いとはいえないと考えています。</p>
             <p>ところで、現代は「英会話学習天国」です。インターネットのおかげです。<br>
             動画や教材が豊富にあり、書籍も数多くあります。<br>
-            また、英会話を自分で習得する必要性自体も、以前より低くなった時代ともいえます。インターネット上には、自動翻訳アプリなど便利な道具があるからです。<br>
+            また、英会話を自分で習得する必要性自体も、以前より低くなった時代ともいえます。自動翻訳アプリなど携帯端末機器やメガネにあるからです。<br>
             第二言語を学習するには良い環境が整っていて、また、学習しなくても困らない時代になるといっても過言ではないかと思います。</p>
             <p>いずれにせよ、あとは本人の動機や興味の度合いということになるでしょう。<br>
             英会話の練習を始めるにあたり、どうしても英会話の習得が必要だという状況にある方も、人生をより豊かにするために英会話を学習される方も、それぞれの目的や目標に向けて、最後まで読んでいただければと願っています。</p>
@@ -267,7 +301,7 @@
 
     <!-- コラム#02 -->
     <div id="page-col02" class="page">
-        <h2 class="column-title">コラム#02 似て非なるもの――共通点と異なるところ</h2>
+        <h2 class="column-title">コラム#02 似て非なるもの  共通点と異なるところ</h2>
         <div class="column-content">
             <p>筆者が学校で英語の授業を受け始めたのは中学校からでした。2020年からは、小学校高学年の英語が正式な教科となり、成績がつけられるようになったようです。<br>
             ここでは「英語」を学校で習う科目の一つとして捉え、他の教科との共通点と、「英会話」との違いから考えてみたいと思います。<br>
@@ -308,9 +342,7 @@
         <h2 class="column-title">コラム#03 「英会話」を掘り下げる</h2>
         <div class="column-content">
             <p>「英会話」という言葉の定義を検索してみました。<br>
-            「英語を用いて即時に意思疎通を行う、口頭でのやり取り」という説明がありました。<br>
-            つまり、会話とは「即時に意思疎通を行う口頭でのやり取り」といえます。<br>
-            また、「会話は言葉のキャッチボールである」というフレーズもよく耳にします。</p>
+            「英語を用いて即時に意思疎通を行う、口頭でのやり取り」という説明がありました。</p>
             <p>昨今、レストランやコンビニエンスストアなど、さまざまな場所で日本語を話す外国人の方を目にします。<br>
             ひとこと、ふたこと話をすると、「きっと日本語は第二言語なのだろうな」と思うことがあります。</p>
             <p>そして、英会話が趣味の筆者は、「この方は日本語を結構勉強されている」と感心させられることが多々あります。<br>
@@ -336,8 +368,14 @@
             <p>英語で使われる音の種類と日本語の音の種類を比べると、日本語には存在しない英語の音がいくつもあります。<br>
             例えば、英単語のスペルに出てくる ”R”や”TH” に対応する音などです。<br>
             母音についても、日本語の「ア」に近い音だけを見ても、英語には複数の異なる音があります。</p>
-            <p>こうした「日本語にはない英語の音」があることは、英会話を学ぶうえで重要なポイントになります。<br>
-            <small>※英会話に支障がないよう、英語の発音(発音記号)については、ゆくゆく詳しく解説していきます。</small></p>
+            <p>こうした「日本語にはない英語の音」があることは、英会話を学ぶうえで重要なポイントになります。</p>
+            <p>「会話は言葉のキャッチボールである」というフレーズもよく耳にします。キャッチボールのように相手が捕れる範囲内に収まるようこちらから言葉を投げる。相手が自分へ投げた言葉もしっかり受け止めなければなりません。<br>
+            これらを第二言語の習得する上で解釈するなら</p>
+            <ul>
+                <li>①自分の思いを相手が理解できる(想定内の)正しい発音、文章で伝える。</li>
+                <li>②相手が発する(相手は母語として話すことを想定してます)言葉を聞き取り理解する。</li>
+            </ul>
+            <p>…といえます。</p>
 
             <div class="column-summary">
                 【このコラムのまとめ】<br>
